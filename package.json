@@ -1,0 +1,17 @@
+{
+  "name": "drmlib",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "drmlib_bg.wasm",
+    "drmlib.js",
+    "drmlib_bg.js",
+    "drmlib.d.ts"
+  ],
+  "main": "drmlib.js",
+  "types": "drmlib.d.ts",
+  "sideEffects": [
+    "./drmlib.js",
+    "./snippets/*"
+  ]
+}
