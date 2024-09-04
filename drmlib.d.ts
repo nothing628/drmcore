@@ -119,3 +119,52 @@ export function get_section_webp(byts_ptr: number, byts_len: number, x: number, 
 * @returns {number}
 */
 export function get_section_jpeg(byts_ptr: number, byts_len: number, x: number, y: number, w: number, h: number): number;
+
+export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
+
+export interface InitOutput {
+  readonly memory: WebAssembly.Memory;
+  readonly create_arr_result: () => number;
+  readonly len_arr_result: (a: number) => number;
+  readonly read_arr_result: (a: number, b: number) => number;
+  readonly destroy_arr_result: (a: number) => void;
+  readonly create_watermarktask: () => number;
+  readonly set_position_watermark: (a: number, b: number, c: number, d: number, e: number) => void;
+  readonly set_target_webp: (a: number, b: number, c: number) => number;
+  readonly set_target_jpeg: (a: number, b: number, c: number) => number;
+  readonly set_watermark_webp: (a: number, b: number, c: number) => number;
+  readonly set_watermark_jpeg: (a: number, b: number, c: number) => number;
+  readonly set_key: (a: number, b: number, c: number) => number;
+  readonly destroy_watermarktask: (a: number) => void;
+  readonly process_watermark: (a: number) => number;
+  readonly get_old_section_webp: (a: number, b: number) => number;
+  readonly get_old_section_jpeg: (a: number, b: number) => number;
+  readonly get_output_webp: (a: number, b: number) => number;
+  readonly get_output_jpeg: (a: number, b: number) => number;
+  readonly add: (a: number) => number;
+  readonly add_array: (a: number, b: number) => number;
+  readonly ret_arr: () => number;
+  readonly get_section_webp: (a: number, b: number, c: number, d: number, e: number, f: number) => number;
+  readonly get_section_jpeg: (a: number, b: number, c: number, d: number, e: number, f: number) => number;
+}
+
+export type SyncInitInput = BufferSource | WebAssembly.Module;
+/**
+* Instantiates the given `module`, which can either be bytes or
+* a precompiled `WebAssembly.Module`.
+*
+* @param {SyncInitInput} module
+*
+* @returns {InitOutput}
+*/
+export function initSync(module: SyncInitInput): InitOutput;
+
+/**
+* If `module_or_path` is {RequestInfo} or {URL}, makes a request and
+* for everything else, calls `WebAssembly.instantiate` directly.
+*
+* @param {InitInput | Promise<InitInput>} module_or_path
+*
+* @returns {Promise<InitOutput>}
+*/
+export default function __wbg_init (module_or_path?: InitInput | Promise<InitInput>): Promise<InitOutput>;
