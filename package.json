@@ -1,7 +1,7 @@
 {
   "name": "drmlib",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "files": [
     "drmlib_bg.wasm",
     "drmlib.js",
